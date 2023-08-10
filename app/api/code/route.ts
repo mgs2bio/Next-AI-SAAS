@@ -1,4 +1,3 @@
-import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
 
@@ -20,7 +19,7 @@ export async function POST(
   req: Request
 ) {
   try {
-    const { userId } = auth();
+    const { userId } = { userId: "true"};
     const body = await req.json();
     const { messages  } = body;
 
