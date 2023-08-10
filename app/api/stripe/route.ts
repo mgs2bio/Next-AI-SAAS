@@ -1,4 +1,4 @@
-import { auth, currentUser } from "@clerk/nextjs";
+
 import { NextResponse } from "next/server";
 
 import prismadb from "@/lib/prismadb";
@@ -9,8 +9,8 @@ const settingsUrl = absoluteUrl("/settings");
 
 export async function GET() {
   try {
-    const { userId } = auth();
-    const user = await currentUser();
+    const { userId } = {"userId" : "123"};
+
 
     if (!userId || !user) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -37,7 +37,7 @@ export async function GET() {
       payment_method_types: ["card"],
       mode: "subscription",
       billing_address_collection: "auto",
-      customer_email: user.emailAddresses[0].emailAddress,
+      customer_email: "abc@gmail.com",
       line_items: [
         {
           price_data: {
