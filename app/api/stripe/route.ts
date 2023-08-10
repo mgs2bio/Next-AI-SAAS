@@ -12,7 +12,7 @@ export async function GET() {
     const { userId } = {"userId" : "123"};
 
 
-    if (!userId || !user) {
+    if (!userId ) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
